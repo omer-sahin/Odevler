@@ -1,0 +1,34 @@
+const BlogPost=[
+  {PostTitle:"Post 1 Title ", PostContent:"Post 1 Content "},
+  {PostTitle:"Post 2 Title ", PostContent:"Post 2 Content "},
+  {PostTitle:"Post 3 Title ", PostContent:"Post 3 Content "}
+]
+const ListPost =()=>{
+      BlogPost.map(list=>{
+        console.log(list.PostTitle+"      "+list.PostContent)
+      })
+}
+const addPost=(posts)=>{
+  const promiseOne=new Promise((resolve,reject)=>{
+    BlogPost.push(posts)
+
+    resolve(BlogPost)
+    reject("Bir Hata Oluştu ")
+  })
+  return promiseOne
+     
+}
+async function listedPost(){
+  try{
+    await addPost({PostTitle:"Post 4 Title ", PostContent:"Post 4 Content "})
+
+    ListPost()
+  }
+  catch (error){
+
+    console.log(error)
+
+  }
+}
+
+listedPost()
